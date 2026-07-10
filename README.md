@@ -67,36 +67,16 @@ See [Build Instructions](#build-instructions) below.
 
 ## Architecture Overview
 
-CVFS models the internal architecture of a Unix-like filesystem:
+CVFS models the internal architecture of a Unix-like filesystem with three main layers:
 
-```
-+--------------------------------------------------------------+
-|                        SUPER BLOCK                            |
-|               TotalInodes: 50  |  FreeInodes: N               |
-+--------------------------------------------------------------+
-         |                                    |
-         v                                    v
-+----------------------+    +------------------------------+
-|  DILB (Inode List)   |    |  UFDT (File Descriptor Table) |
-|  +------+ +------+   |    |  [0] ---> FILE TABLE          |
-|  |INODE1|>|INODE2|>...|    |  [1] ---> FILE TABLE          |
-|  +------+ +------+   |    |  ...                          |
-|  FileName, Size,      |    |  [49]                         |
-|  FileType, Buffer,    |    +------------------------------+
-|  Link/Reference Count |                  |
-+----------------------+                  | ptrinode
-         |                                |
-         +--------------------------------+
-                     |
-                     v
-          +------------------+
-          |    FILE TABLE     |
-          |  readoffset       |
-          |  writeoffset      |
-          |  mode (R/W/RW)    |
-          |  ptrinode --------+
-          +------------------+
-```
+**Layer 1 — Super Block**
+The super block is the filesystem header. It stores the total number of inodes (50), the count of remaining free inodes, total data blocks (502), and free data blocks. It acts as the master metadata hub for the entire virtual disk.
+
+**Layer 2 — Inode Management (DILB)**
+The Disk Inode List Block (DILB) is a linked list of all inodes in memory. Each inode holds a file's name, size, type (file/directory), permission flags (READ/WRITE/RW), a pointer to its data buffer, link count (number of directory entries pointing to it), and reference count (number of open file descriptors).
+
+**Layer 3 — File Descriptor System (UFDT + File Table)**
+The User File Descriptor Table (UFDT) is an array of 50 entries. Each entry either points to a File Table structure or is NULL (free slot). The File Table stores per-open-instance metadata: read offset, write offset, access mode, and a back-pointer to the inode. This three-tier mapping (fd -> file table -> inode) mirrors how real operating systems manage open files.
 
 | Component | Role |
 |-----------|------|
