@@ -29,7 +29,13 @@ CVFS is an educational Linux-inspired virtual file system built in C with a Qt-b
 
 ## Screenshots
 
-*(Add screenshots here — main window, file explorer panel, visualization panel, CLI shell)*
+![Main Window — GUI with file explorer and visualization panel](screenshots/main_window.png)
+
+*Main window showing the file explorer (left) and live visualization panel (right) with inode bitmap, block bitmap, and super block stats*
+
+![CLI Mode — Terminal-based file system shell](screenshots/cli_mode.png)
+
+*CLI shell running file operations on the virtual disk*
 
 ---
 
