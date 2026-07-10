@@ -27,7 +27,6 @@ jobs:
       with:
         version: ${{ matrix.qt_version }}
         arch: ${{ matrix.qt_arch }}
-        modules: qtbase
         cache: true
 
     - name: Configure CMake
@@ -72,8 +71,7 @@ jobs:
       uses: jurplel/install-qt-action@v4
       with:
         version: '6.6'
-        arch: win64_msvc2019_64
-        modules: qtbase
+        arch: win64_msvc2022_64
         cache: true
 
     - name: Configure CMake
