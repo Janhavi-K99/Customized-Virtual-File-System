@@ -1,0 +1,90 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+*/Debug/
+*/Release/
+*.dir/
+
+# Compiled binaries
+*.exe
+*.exe~
+*.dll
+*.lib
+*.a
+*.so
+*.dylib
+*.app
+
+# Object files
+*.o
+*.obj
+*.obj~
+
+# CMake generated
+CMakeFiles/
+CMakeCache.txt
+CMakeUserPresets.json
+cmake_install.cmake
+Makefile
+CMakeTmp/
+CTestTestfile.cmake
+*.cmake
+!CMakeLists.txt
+!*.cmake.in
+!cmake/
+
+# Qt autogen
+*_autogen/
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.moc
+
+# IDE / editor
+.vs/
+.vscode/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.opendb
+*.VC.db
+*.vcxproj.user
+*.cbp
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+*.kdev4
+.project
+.cproject
+.settings/
+
+# Qt Creator
+*.autosave
+*.qm
+*.pro.user*
+moc_output.txt
+qrc_*
+
+# Virtual disk (generated at runtime)
+*.img
+*.vdi
+*.vmdk
+
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Internal dev notes (not for public repo)
+AGENTS.md
+BLUEPRINT.md
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
