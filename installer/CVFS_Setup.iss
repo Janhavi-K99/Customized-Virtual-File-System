@@ -30,7 +30,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "Create a &desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: checkedonce
 
 [Dirs]
-Name: "{app}"; Flags: uninsalwaysuninstaller
+Name: "{app}"; Flags: uninsalwaysuninstall
 
 [Files]
 Source: "{#SourcePath}\..\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
